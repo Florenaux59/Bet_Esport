@@ -1,0 +1,29 @@
+.games{
+margin-top: 6%;
+height: 200px;
+background-color: #FF7D29;
+float: right;
+width: 95%;
+display: flex;
+color: #FFFFFF;
+
+}
+.league_games{
+  width: 33.33%;
+  height: 100%;
+ display: flex;
+ align-items: center;
+}
+.rocket_games{
+  width: 33.33%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 1px black;
+}
+.valorant_games{
+  width: 33.33%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
