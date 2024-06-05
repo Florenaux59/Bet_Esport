@@ -1,1 +1,32 @@
-// Specific CSS for your home-page
+.containere{
+  text-align: center;
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.background{
+  background-color: #FF7D29;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+h1 {
+  color: white;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 5%;
+  letter-spacing: 5px;
+}
+
+.classic-font {
+  color: white;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  padding-top: 5%;
+  padding-bottom: 150px;
+  letter-spacing: 5px;
+  width: 85%;
+  margin: 0 auto;
+}
