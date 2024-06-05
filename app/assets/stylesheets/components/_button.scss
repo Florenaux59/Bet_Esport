@@ -1,0 +1,22 @@
+.button {
+  background-color: #FF7D29;
+  border: none;
+  color: white;
+  padding: 10px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button:hover{
+  opacity: 0.8;
+}
+
+.button p {
+  margin-top: none !important;
+}

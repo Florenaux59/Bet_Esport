@@ -1,12 +1,52 @@
-.navbar-lewagon {
+.navbar {
+  background-color: #FF7D29;
+  height: 70px;
+  display: flex;
+}
+.avatar{
+height: 100%;
+width: auto;
+}
+#trait_cote{
+  border-right: 1px solid white;
+  height: 80%;
+}
+
+.part_left_navbar{
+width: 35%;
+height: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: #FFFFFF;
+padding-left: 2%;
+}
+.title{
+text-decoration: none;
+color: #FFFFFF;
+}
+.part_right_navbar{
+  display: flex;
   justify-content: space-between;
-  background: white;
+  width: 23%;
+  color: #FFFFFF;
+  align-items:center;
+  padding-right: 3%;
 }
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.paris{
+  display: flex;
+  height: 100%;
+  justify-content:space-around;
 }
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.boutique{
+  display: flex;
+  text-align: center;
+  height: 100%;
+  justify-content: space-around;
+}
+.dropdown-menu{
+  background-color: #FF7D29;
+}
+.dropdown-item{
+color: #FFFFFF;
 }
