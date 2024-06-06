@@ -6,24 +6,51 @@ float: right;
 width: 95%;
 display: flex;
 color: #FFFFFF;
-
 }
 .league_games{
-  width: 33.33%;
+  width: 31%;
   height: 100%;
  display: flex;
  align-items: center;
+ background-color: #FFBF78;
 }
 .rocket_games{
-  width: 33.33%;
+  width: 35%;
   height: 100%;
   display: flex;
   align-items: center;
-  border: solid 1px black;
+  background-color: #FFBF78;
+  opacity: 0.8;
 }
 .valorant_games{
-  width: 33.33%;
+  width: 34%;
   height: 100%;
   display: flex;
   align-items: center;
+  background-color: #FFBF78;
+  opacity: 0.8;
+}
+.active_lol{
+  background-color: #FF7D29;
+}
+.active_rocket{
+  background-color: #FF7D29;
+  border: solid 1px #FF7D29;
+  border-radius: 50px;
+}
+.border_rocket_left{
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.border_rocket_right{
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  border: solid 1px #FFBF78;
+}
+.active_valorant{
+  background-color: #FF7D29;
+}
+.change_background{
+  background-color: #FFBF78;
 }
