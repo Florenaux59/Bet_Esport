@@ -1,17 +1,9 @@
-
 <nav class="navbar">
   <div class="part_left_navbar">
             <%= image_tag "https://avatars.githubusercontent.com/u/165579109?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
-              <% if user_signed_in? %>
-              <%= link_to "Information personnel", profils_path, class: "dropdown-item" %>
-              <%= link_to "Inventaire", "#", class: "dropdown-item" %>
-              <%= link_to "Paris en cours", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
-              <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-              <% else %>
               <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
               <%= link_to "Inscription", new_user_registration_path, class: "dropdown-item" %>
-              <% end %>
             </div>
       <div id="trait_cote"></div>
        <h5>Cagnotte:</h5>
@@ -19,22 +11,44 @@
     </div>
     <div class="part_right_navbar">
       <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
-        <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
         <div class="paris">
           <%= image_tag("piece-de-monnaie.png", alt: "pièce-de-monnaie", height: 26)%>
           <h3>Paris</h3>
         </div>
       <% end %>
-      <% end %>
       <div class="boutique">
           <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
-          <h3> Boutique</h3>
+          <h3>Boutique</h3>
       </div>
     </div>
 </nav>
 
 <div class="mx-auto" style="width: 400px; ">
   <div class="d-flex justify-content-center mt-5 mb-2">
-    <h2>Index matchs</h2>
+    <h2>Inscription</h2>
   </div>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
+
+    <div class="form-actions mb-3">
+      <%= f.button :submit, "Inscription", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 </div>
