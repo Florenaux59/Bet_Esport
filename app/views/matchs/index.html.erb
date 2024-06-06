@@ -20,8 +20,26 @@
       <div class="boutique">
           <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
           <h3>Boutique</h3>
-      </div>
+       </div>
     </div>
 </nav>
 
-  <p>Index matchs</p>
+<div class="games" data-games-target="games" data-controller="games">
+
+  <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
+    <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
+    <h2>League of Legends</h2>
+  </div>
+
+  <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
+    <%= image_tag("rocket-league-img.png", alt: "rocket", height: 165)%>
+    <h2>Rocket League</h2>
+  </div>
+
+  <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
+    <%= image_tag("valorant-img.png", alt: "valorant", height: 165)%>
+    <h2>Valorant</h2>
+  </div>
+
+
+</div>
