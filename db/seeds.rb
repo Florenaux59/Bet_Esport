@@ -18,12 +18,12 @@ response = http.request(request)
 response_body = response.body
 array = JSON.parse(response_body)
 
-puts "---------------------------début création team valo--------------------------"
-array.each do |team|
-  Team.create(team_name: team["name"])
-  puts Team.all.name
-end
-puts "---------------------------fin création team valo--------------------------"
+# puts "---------------------------début création team valo--------------------------"
+# array.each do |team_valo|
+#   Team.create(team_name: team_valo["name"])
+#   puts Team.all.name
+# end
+# puts "---------------------------fin création team valo--------------------------"
 
 
 url2 = URI("https://api.pandascore.co/rl/teams")
@@ -39,8 +39,8 @@ response_body2 = response2.body
 array2 = JSON.parse(response_body2)
 
 puts "---------------------------début création team rl--------------------------"
-array2.each do |team|
-  Team.create(team_name: team["name"])
+array2.each do |team_rl|
+  Team.create(team_name: team_rl["name"])
   puts Team.all.name
 end
 puts "---------------------------fin création team rl--------------------------"
@@ -58,9 +58,9 @@ response3 = http3.request(request3)
 response_body3 = response3.body
 array3 = JSON.parse(response_body3)
 
-puts "---------------------------début création team lol--------------------------"
-array3.each do |team|
-  Team.create(team_name: team["name"])
-  Team.all.name
-end
-puts "---------------------------fin création team lol--------------------------"
+# puts "---------------------------début création team lol--------------------------"
+# array3.each do |team_lol|
+#   Team.create(team_name: team_lol["name"])
+#   Team.all.name
+# end
+# puts "---------------------------fin création team lol--------------------------"
