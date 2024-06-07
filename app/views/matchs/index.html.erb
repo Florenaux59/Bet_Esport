@@ -19,9 +19,26 @@
 
 
 </div>
+<div class="cards">
 
-<ul>
-  <%= @matchs.each do |match| %>
-      <li><%= match.team1.team_name %> VERSUS <%= match.team2.team_name %></li>
+
+<%= @matchs.each do |match| %>
+<div class="card_custom">
+
+  <div class="top_element_card">
+
+    <% image_tag("lol-img-i.png", alt: "lol", height: 26) %>
+    <h4><%= match.game.name %></h4>
+    <p class="date"><%= match.start_date %><p>
+
+  </div>
+      <div class="team_match">
+
+        <div class="team1"><%= match.team1.team_name %> </div>
+        <div class="team2"><%= match.team2.team_name %> </div>
+
+      </div>
+  </div>
   <% end %>
-</ul>
+
+</div>
