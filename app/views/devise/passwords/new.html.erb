@@ -1,28 +1,3 @@
-<nav class="navbar">
-  <div class="part_left_navbar">
-            <%= image_tag "https://avatars.githubusercontent.com/u/165579109?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
-              <%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %>
-              <%= link_to "Inscription", new_user_registration_path, class: "dropdown-item" %>
-            </div>
-      <div id="trait_cote"></div>
-       <h5>Cagnotte:</h5>
-       <h2><%=link_to "Bet Esport", matchs_path, class:"title"%></h2>
-    </div>
-    <div class="part_right_navbar">
-      <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
-        <div class="paris">
-          <%= image_tag("piece-de-monnaie.png", alt: "pièce-de-monnaie", height: 26)%>
-          <h3>Paris</h3>
-        </div>
-      <% end %>
-      <div class="boutique">
-          <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
-          <h3>Boutique</h3>
-      </div>
-    </div>
-</nav>
-
 <div class="mx-auto" style="width: 400px; ">
   <div class="d-flex justify-content-center mt-5 mb-2">
     <h2>Forgot your password?</h2>
