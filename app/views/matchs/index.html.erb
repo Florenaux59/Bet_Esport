@@ -1,6 +1,7 @@
 
 <div class="games" data-games-target="games" data-controller="games">
 
+
   <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
     <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
     <h2>League of Legends</h2>
@@ -18,3 +19,9 @@
 
 
 </div>
+
+<ul>
+  <%= @matchs.each do |match| %>
+      <li><%= match.team1.team_name %> VERSUS <%= match.team2.team_name %></li>
+  <% end %>
+</ul>
