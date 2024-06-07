@@ -9,13 +9,13 @@
 #   end
 User.destroy_all
 
-florent = User.new(email: "flo@gmail.com", password: "password" )
+florent = User.new(email: "flo@gmail.com", password: "password", picture: "default-user", bank: 5000)
 florent.save
 
-nicolas = User.new(email: "nico@gmail.com", password: "password")
+nicolas = User.new(email: "nico@gmail.com", password: "password", picture: "default-user", bank: 5000)
 nicolas.save
 
-remi = User.new(email: "remi@gmail.com", password: "password")
+remi = User.new(email: "remi@gmail.com", password: "password", picture: "default-user", bank: 5000)
 remi.save
 
 require 'uri'
