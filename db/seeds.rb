@@ -9,13 +9,13 @@
 #   end
 User.destroy_all
 
-florent = User.new(email: "flo@gmail.com", password: "password" )
+florent = User.new(email: "flo@gmail.com", password: "password", picture: "default-user", bank: 5000)
 florent.save
 
-nicolas = User.new(email: "nico@gmail.com", password: "password")
+nicolas = User.new(email: "nico@gmail.com", password: "password", picture: "default-user", bank: 5000)
 nicolas.save
 
-remi = User.new(email: "remi@gmail.com", password: "password")
+remi = User.new(email: "remi@gmail.com", password: "password", picture: "default-user", bank: 5000)
 remi.save
 
 require 'uri'
@@ -178,3 +178,19 @@ counter = 1
   counter += 1
 end
 puts "---------------------------fin création match lol --------------------------"
+
+Item.destroy_all
+
+Item.create!(name: "Le Sorcier", picture: "sorcier", price: "5000")
+Item.create!(name: "La Princesse", picture: "princesse", price: "6000")
+Item.create!(name: "Le Pilote", picture: "racer", price: "2500")
+Item.create!(name: "La Policière", picture: "policewoman", price: "8000")
+Item.create!(name: "Le Sherlock", picture: "sherlock", price: "6500")
+Item.create!(name: "La Japonaise", picture: "japonaise", price: "1500")
+Item.create!(name: "Le Combatant", picture: "combatant", price: "5500")
+Item.create!(name: "La Footbaleuse", picture: "footbaleuse", price: "10000")
+Item.create!(name: "Le Clown", picture: "clown", price: "3000")
+Item.create!(name: "La Karateka", picture: "karatéka", price: "3500")
+Item.create!(name: "Le Capitaine", picture: "capitaine", price: "4000")
+
+p Item.all.size
