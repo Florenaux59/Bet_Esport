@@ -1,43 +1,76 @@
-<div class="games" data-games-target="games" data-controller="games">
+<div data-controller="games">
 
 
-  <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
-    <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
-    <h2>League of Legends</h2>
-  </div>
-
-  <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
-    <%= image_tag("rocket-league-img.png", alt: "rocket", height: 165)%>
-    <h2>Rocket League</h2>
-  </div>
-
-  <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
-    <%= image_tag("valorant-img.png", alt: "valorant", height: 165)%>
-    <h2>Valorant</h2>
-  </div>
 
 
-</div>
-<div class="cards">
 
 
-<%= @matchs.each do |match| %>
-<div class="card_custom">
+  <div class="d-flex justify-content-end w-100">
 
-  <div class="top_element_card">
+    <div class="games" data-games-target="games">
 
-    <% image_tag("lol-img-i.png", alt: "lol", height: 26) %>
-    <h4><%= match.game.name %></h4>
-    <p class="date"><%= match.start_date %><p>
+
+    <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
+      <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
+      <h2>League of Legends</h2>
+    </div>
+
+    <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
+      <%= image_tag("rocket-league-img.png", alt: "rocket", height: 165)%>
+      <h2>Rocket League</h2>
+    </div>
+
+    <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
+      <%= image_tag("valorant-img.png", alt: "valorant", height: 165)%>
+      <h2>Valorant</h2>
+    </div>
 
   </div>
-      <div class="team_match">
 
-        <div class="team1"><%= match.team1.team_name %> </div>
-        <div class="team2"><%= match.team2.team_name %> </div>
+  </div>
 
+  <h1 class="title_match">Matchs à venir :</h1>
+
+
+
+  <div class="cards">
+
+
+  <% @matchs.each do |match| %>
+  <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
+
+    <div class="top_element_card">
+
+      <%= image_tag("lol-img-i.png", alt: "lol",class: "img_game") %>
+      <div>
+          <h4><%= match.game.name %></h4>
+          <p class="date"><%= match.start_date %></p>
       </div>
-  </div>
-  <% end %>
 
+
+    </div>
+        <div class="team_match">
+
+          <div class="team1"><%= match.team1.team_name %>
+            <% unless match.team1.picture.nil? %>
+              <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
+            <% else %>
+                <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
+            <% end %>
+          </div>
+
+          <div class="team2">
+            <% unless match.team2.picture.nil? %>
+              <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
+              <% else %>
+                  <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
+              <% end %>
+              <%= match.team2.team_name %>
+          </div>
+
+        </div>
+    </div>
+    <% end %>
+
+  </div>
 </div>
