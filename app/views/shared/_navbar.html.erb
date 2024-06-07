@@ -18,16 +18,18 @@
     </div>
     <div class="part_right_navbar">
       <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
-        <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
         <div class="paris">
           <%= image_tag("piece-de-monnaie.png", alt: "pièce-de-monnaie", height: 26)%>
           <h3>Paris</h3>
         </div>
       <% end %>
-      <% end %>
       <div class="boutique">
+      <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
+        <div class="paris">
           <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
           <h3> Boutique</h3>
+        </div>
+      <% end %>
       </div>
     </div>
 </nav>
