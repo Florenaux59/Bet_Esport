@@ -1,0 +1,64 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin-top: 7%;
+  grid-row-gap: 100px;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+.card_custom{
+  border: solid 2px #FF7D29;
+  border-radius: 10px;
+  padding: 4%;
+}
+.img_game{
+  height: 80px;
+  }
+
+.top_element_card{
+float: right;
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+.date{
+  float: right;
+}
+.team_match{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3%;
+  height: 65%;
+
+  .team1{
+    width: 48%;
+    background-color: #FFEEA9;
+    border-radius: 10px;
+    border: solid 1px #FFEEA9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3%;
+    max-height: 100%;
+
+  }
+  .team2{
+    width: 48%;
+    background-color: #FFEEA9;
+    border-radius: 10px;
+    border: solid 1px #FFEEA9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    max-height: 100%;
+    text-align: right;
+  }
+}
+
+.picture_team{
+  height: 30px;
+}
