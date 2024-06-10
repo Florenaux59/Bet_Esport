@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="part_left_navbar">
+            <%= image_tag "https://avatars.githubusercontent.com/u/165579109?v=4", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+              <%= link_to "Information personnel", "#", class: "dropdown-item" %>
+              <%= link_to "Inventaire", "#", class: "dropdown-item" %>
+              <%= link_to "Paris en cours", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+              <%# link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+            </div>
+      <div id="trait_cote"></div>
+       <h5>Cagnotte:</h5>
+       <h2><%=link_to "Bet Esport", matchs_path, class:"title"%></h2>
+    </div>
+    <div class="part_right_navbar">
+      <div class="paris">
+          <%= image_tag("piece-de-monnaie.png", alt: "pièce-de-monnaie", height: 26)%>
+          <h3>Paris</h3>
+      </div>
+      <div class="boutique">
+          <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
+          <h3>Boutique</h3>
+      </div>
+    </div>
+</nav>
+
+<div class="search_bar mt-5">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Chapeau, Lunette..."
+        %>
+      <%= image_submit_tag("loupe.png", name: "", class: "button rounded-5") %>
+    <% end %>
+</div>
+
+<div class="parent">
+  <div class="card-container">
+    <%@items.each do |item|%>
+      <div class="card-category">
+        <h3><%= item.name%></h3>
+        <h4><%= "Prix: #{item.price}PC"%></h4>
+      </div>
+     <% end %>
+  </div>
+</div>
