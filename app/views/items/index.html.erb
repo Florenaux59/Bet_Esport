@@ -1,6 +1,6 @@
 <div class="mx-auto" style="width: 900px; ">
   <div class="d-flex justify-content-center mt-5 mb-2">
-    <h2>Bienvenue dans la boutique</h2>
+    <h2 class="title_store">Bienvenue dans la boutique</h2>
   </div>
   <div class="search">
       <%= form_with url: items_path, method: :get, class: "d-flex" do %>
@@ -16,10 +16,10 @@
   <div class="cards">
     <% @items.each do |item| %>
       <div class="card-product">
-        <%= image_tag item.picture %>
+        <%= image_tag item.picture, class: "img_characters" %>
           <div class="card-product-infos">
             <h2><%= item.name %></h2>
-            <p>Prix :<strong><%= item.price %></strong> pièces</p>
+            <p><strong><%= item.price %></strong><%= image_tag("cash.png", alt: "cash", class: "img_cash")%></p>
           </div>
       </div>
     <% end %>
