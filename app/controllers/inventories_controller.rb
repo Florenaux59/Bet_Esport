@@ -1,6 +1,9 @@
 class InventoriesController < ApplicationController
   def index
     @inventories = Inventory.where(user: current_user)
+    if params[:query].present?
+      @inventories = @inventories.joins(:item).where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def create

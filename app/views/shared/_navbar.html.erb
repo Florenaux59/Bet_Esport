@@ -19,7 +19,9 @@
     <% end %>
     </div>
       <div id="trait_cote"></div>
+      <% unless current_user.nil? %>
        <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
+       <% end %>
        <h2><%=link_to "Bet Esport", matchs_path, class:"title"%></h2>
     </div>
     <div class="part_right_navbar">
