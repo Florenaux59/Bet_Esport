@@ -22,8 +22,17 @@ display: flex;
 justify-content: space-between;
 width: 100%;
 }
+.game_title{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
 .date{
   float: right;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 .team_match{
   display: flex;
@@ -43,6 +52,9 @@ width: 100%;
     align-items: center;
     padding: 3%;
     max-height: 100%;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 
   }
   .team2{
@@ -56,6 +68,9 @@ width: 100%;
     padding: 3%;
     max-height: 100%;
     text-align: right;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
   }
 }
 
