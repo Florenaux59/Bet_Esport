@@ -1,10 +1,14 @@
 <nav class="navbar">
   <div class="part_left_navbar">
     <% if user_signed_in? %>
-      <%= image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if current_user.inventories.exists?(status: 'equipped') %>
+        <%= image_tag current_user.inventories.find_by(status: 'equipped').item.picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <%= image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
       <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
         <%= link_to "Information personnel", profils_path, class: "dropdown-item" %>
-        <%= link_to "Inventaire", "#", class: "dropdown-item" %>
+        <%= link_to "Inventaire", inventories_path, class: "dropdown-item" %>
         <%= link_to "Paris en cours", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
         <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
     <% else %>
@@ -15,7 +19,7 @@
     <% end %>
     </div>
       <div id="trait_cote"></div>
-       <h5 class="bank_text"><b>5345</b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
+       <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
        <h2><%=link_to "Bet Esport", matchs_path, class:"title"%></h2>
     </div>
     <div class="part_right_navbar">

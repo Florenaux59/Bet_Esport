@@ -6,10 +6,10 @@
       <%= form_with url: items_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
-              class: "form-control",
+              class: "form-control m-3",
               placeholder: "Chapeau..."
           %>
-        <%= submit_tag "Rechercher", name: "", class: "btn btn-outline-primary rounded-5" %>
+        <%= submit_tag "Rechercher", name: "", class: "btn btn-outline-primary m-3 rounded-5" %>
       <% end %>
   </div>
 
@@ -17,11 +17,38 @@
     <% @items.each do |item| %>
       <div class="card-product">
         <%= image_tag item.picture, class: "img_characters" %>
-          <div class="card-product-infos">
-            <h2><%= item.name %></h2>
-            <p><strong><%= item.price %></strong><%= image_tag("cash.png", alt: "cash", class: "img_cash")%></p>
-          </div>
+            <div class="card-product-infos">
+              <h2><%= item.name %></h2>
+              <p><strong><%= item.price %></strong><%= image_tag("cash.png", alt: "cash", class: "img_cash")%></p>
+              <% if item.price <= current_user.bank && !current_user.inventories.exists?(item: item) %>
+                <button type="button" class="btn btn-outline-primary mt-2 rounded-5" data-bs-toggle="modal" data-bs-target="#itemModal<%= item.id %>">Acheter</button>
+              <% else %>
+                <button type="button" class="btn btn-outline-primary mt-2 rounded-5" data-bs-toggle="modal" data-bs-target="#itemModal<%= item.id %>"disabled>Acheter</button>
+              <% end %>
+            </div>
       </div>
     <% end %>
   </div>
+
+  <% @items.each do |item| %>
+    <div class="modal fade" id="itemModal<%= item.id %>" tabindex="-1" aria-labelledby="itemModalLabel<%= item.id %>" aria-hidden="true" data-controller="buys">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="itemModalLabel<%= item.id %>"><strong><%= item.name %></strong></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+              <%= image_tag item.picture %>
+            </div>
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+              <%= simple_form_for [item, Inventory.new] do |f| %>
+                <%= f.submit "Valider l'achat", class: "btn btn-outline-primary m-3 rounded-5" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
 </div>
