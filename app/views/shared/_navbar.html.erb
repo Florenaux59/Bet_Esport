@@ -15,8 +15,8 @@
     <% end %>
     </div>
       <div id="trait_cote"></div>
-       <h5>Cagnotte: 0 </h5>
-       <h2><%=link_to "Bet Esport", matchs_path, class:"title"%></h2>
+       <h5>Cagnotte: <%current_user.bank%> </h5>
+       <%= image_tag("logoblanc.png", alt: "logo", class: "logo")%>
     </div>
     <div class="part_right_navbar">
       <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
