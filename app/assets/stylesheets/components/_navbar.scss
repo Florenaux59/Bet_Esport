@@ -7,6 +7,11 @@
 height: 100%;
 width: auto;
 }
+.bank_text{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
 #trait_cote{
   border-right: 1px solid white;
   height: 80%;
@@ -38,6 +43,11 @@ color: #FFFFFF;
   height: 100%;
   justify-content:space-around;
 }
+.link_to_text{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 .boutique{
   display: flex;
   text-align: center;
@@ -49,4 +59,8 @@ color: #FFFFFF;
 }
 .dropdown-item{
 color: #FFFFFF;
+}
+.img_cash_white{
+  height: 30px;
+  padding-left: 10px;
 }

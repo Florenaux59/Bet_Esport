@@ -22,7 +22,13 @@ class InventoriesController < ApplicationController
     @item = Item.find(params[:item_id])
     @inventorie.item = @item
     @inventorie.item.status = "equipped"
-    @inventorie.update
+    @inventorie.update(inventorie_params)
     redirect_to inventories_path
+  end
+
+  private
+
+  def inventorie_params
+    params.require(:inventorie).permit(:status)
   end
 end

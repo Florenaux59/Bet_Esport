@@ -20,7 +20,7 @@
           <div class="card-product-infos">
             <h2><%= inventorie.item.name %></h2>
             <p><strong><%= inventorie.status %></strong></p>
-            <%= simple_form_for [ @inventories, @item ] do |f| %>
+            <%= simple_form_for [@item, @inventorie] do |f| %>
               <%= f.submit "Equiper", class: "btn btn-outline-primary m-3 rounded-5" %>
             <% end %>
           </div>
