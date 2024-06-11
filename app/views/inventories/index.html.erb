@@ -1,9 +1,9 @@
 <div class="mx-auto" style="width: 900px; ">
   <div class="d-flex justify-content-center mt-5">
-    <h2>Bienvenue dans votre inventaire</h2>
+    <h2 class="title_store">Bienvenue dans votre inventaire</h2>
   </div>
   <div class="search">
-      <%= form_with url: items_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: inventories_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
               class: "form-control m-3",
@@ -18,9 +18,12 @@
         <div class="card-product">
         <%= image_tag inventorie.item.picture, class: "img_characters" %>
           <div class="card-product-infos">
-            <h2><%= inventorie.item.name %></h2>
-            <p><strong><%= inventorie.status %></strong></p>
-            <%= link_to "Equiper", inventory_equipped_path(inventorie), data: {turbo_method: :patch} %>
+              <h2 class= "pb-3"><%= inventorie.item.name %></h2>
+              <% if inventorie.status == "not_equipped" %>
+                <%= link_to "Equiper", inventory_equipped_path(inventorie), class: "button_equiped", data: {turbo_method: :patch} %>
+              <% else %>
+                <%=link_to "Déséquiper", inventory_equipped_path(inventorie), class: "button_desequiped", data: {turbo_method: :patch} %>
+              <% end %>
           </div>
         </div>
     <% end %>
