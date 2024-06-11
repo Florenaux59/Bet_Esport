@@ -12,6 +12,7 @@
         <%= submit_tag "Rechercher", name: "", class: "btn btn-outline-primary m-3 rounded-5" %>
       <% end %>
   </div>
+
   <div class="cards">
     <% @items.each do |item| %>
       <div class="card-product">
@@ -24,28 +25,30 @@
               <% else %>
                 <button type="button" class="btn btn-outline-primary mt-2 rounded-5" data-bs-toggle="modal" data-bs-target="#itemModal<%= item.id %>"disabled>Acheter</button>
               <% end %>
-    <% end %>
             </div>
       </div>
+    <% end %>
+  </div>
 
-<% @items.each do |item| %>
-  <div class="modal fade" id="itemModal<%= item.id %>" tabindex="-1" aria-labelledby="itemModalLabel<%= item.id %>" aria-hidden="true" data-controller="buys">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="itemModalLabel<%= item.id %>"><strong><%= item.name %></strong></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center">
-            <%= image_tag item.picture %>
-          </div>
-          <div class="modal-footer ">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-            <%= simple_form_for [item, Inventory.new] do |f| %>
-              <%= f.submit "Valider l'achat", class: "btn btn-outline-primary m-3 rounded-5" %>
-            <% end %>
+  <% @items.each do |item| %>
+    <div class="modal fade" id="itemModal<%= item.id %>" tabindex="-1" aria-labelledby="itemModalLabel<%= item.id %>" aria-hidden="true" data-controller="buys">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="itemModalLabel<%= item.id %>"><strong><%= item.name %></strong></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+              <%= image_tag item.picture %>
+            </div>
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+              <%= simple_form_for [item, Inventory.new] do |f| %>
+                <%= f.submit "Valider l'achat", class: "btn btn-outline-primary m-3 rounded-5" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-<% end %>
+  <% end %>
+</div>

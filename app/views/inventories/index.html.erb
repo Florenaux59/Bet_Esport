@@ -16,13 +16,11 @@
   <div class="cards">
     <% @inventories.each do |inventorie| %>
         <div class="card-product">
-        <%= image_tag inventorie.item.picture %>
+        <%= image_tag inventorie.item.picture, class: "img_characters" %>
           <div class="card-product-infos">
             <h2><%= inventorie.item.name %></h2>
             <p><strong><%= inventorie.status %></strong></p>
-            <%= simple_form_for [@item, @inventorie] do |f| %>
-              <%= f.submit "Equiper", class: "btn btn-outline-primary m-3 rounded-5" %>
-            <% end %>
+            <%= link_to "Equiper", inventory_equipped_path(inventorie), data: {turbo_method: :patch} %>
           </div>
         </div>
     <% end %>

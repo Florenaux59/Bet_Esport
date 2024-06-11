@@ -17,18 +17,10 @@ class InventoriesController < ApplicationController
     end
   end
 
-  def update
+  def equipped
     @inventorie = Inventory.find(params[:id])
-    @item = Item.find(params[:item_id])
-    @inventorie.item = @item
-    @inventorie.item.status = "equipped"
-    @inventorie.update(inventorie_params)
+    Inventory.where(user: current_user).update_all(status: "not_equipped")
+    @inventorie.update(status: "equipped")
     redirect_to inventories_path
-  end
-
-  private
-
-  def inventorie_params
-    params.require(:inventorie).permit(:status)
   end
 end
