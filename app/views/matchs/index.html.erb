@@ -49,9 +49,9 @@
 
 
     </div>
-        <div class="team_match">
+        <div class="team_match panier" data-controller="add-bets-basket" data-action="click->add-bets-basket#basket">
 
-          <div class="team1"><%= match.team1.team_name %>
+          <div class="team1" data-target="team1" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
             <% unless match.team1.picture.nil? %>
               <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
             <% else %>
@@ -59,7 +59,7 @@
             <% end %>
           </div>
 
-          <div class="team2">
+          <div class="team2" data-target="team2" data-team-two-id=<%= match.team2.id %>>
             <% unless match.team2.picture.nil? %>
               <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
               <% else %>

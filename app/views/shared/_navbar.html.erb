@@ -19,9 +19,11 @@
     <% end %>
     </div>
       <div id="trait_cote"></div>
-       <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
-       <%= image_tag("logoblanc.png", alt: "logo", class: "logo")%>
-    </div>
+        <% unless current_user.nil? %>
+        <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
+        <% end %>
+        <%= image_tag("logoblanc.png", class:"logo") %>
+      </div>
     <div class="part_right_navbar">
       <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
         <div class="paris">

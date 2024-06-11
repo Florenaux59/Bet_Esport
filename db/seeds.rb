@@ -72,7 +72,8 @@ counter = 1
     if match_vl["opponents"].present? && match_vl["opponents"][0] && match_vl["opponents"][1]
       team1 = Team.find_by(team_name: match_vl["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_vl["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant)
+
+      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}")
     end
   end
   counter += 1
