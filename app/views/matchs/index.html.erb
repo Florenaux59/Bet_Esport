@@ -41,7 +41,16 @@
 
       <div class="top_element_card">
 
-        <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+        <%case match.game.js_slug %>
+        <%when "leagueoflegends"%>
+          <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+        <%when "rl"%>
+          <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
+        <%else%>
+          <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
+        <%end %>
+
+
         <div>
             <h4 class="game_title"><%= match.game.name %></h4>
             <p class="date"><%= match.start_date %></p>
