@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_104814) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_153623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_104814) do
     t.string "status"
     t.string "league"
     t.string "serie"
+    t.integer "score_team1"
+    t.integer "score_team2"
     t.index ["game_id"], name: "index_matches_on_game_id"
     t.index ["team1_id"], name: "index_matches_on_team1_id"
     t.index ["team2_id"], name: "index_matches_on_team2_id"

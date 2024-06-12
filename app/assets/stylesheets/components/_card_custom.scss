@@ -82,3 +82,16 @@
 .picture_team {
   height: 30px;
 }
+
+.running {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(134, 0, 0);
+  animation: colorblink 2s infinite;
+}
+
+@keyframes colorblink {
+0% { }
+50% { color:rgb(235, 81, 81); }
+}
