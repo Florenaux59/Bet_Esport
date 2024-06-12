@@ -60,6 +60,17 @@ color: #FFFFFF;
 .dropdown-item{
 color: #FFFFFF;
 }
+.logo{
+height: 100%;
+object-position: center;
+padding-bottom: 2%;
+}
+.icon{
+ background-image: asset_url("piece-de-monnaie.png");
+ height: 100%;
+ width: 100%;
+ object-fit: contain;
+}
 .img_cash_white{
   height: 30px;
   padding-left: 10px;

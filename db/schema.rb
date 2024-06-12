@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_080512) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_132934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_080512) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "odd"
+    t.string "odd"
     t.date "start_date"
     t.bigint "team1_id", null: false
     t.bigint "team2_id", null: false
