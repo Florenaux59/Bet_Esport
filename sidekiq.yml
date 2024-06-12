@@ -1,0 +1,11 @@
+:concurrency: 5
+:queues:
+  # Queue priority:
+  # https://github.com/sidekiq/sidekiq/wiki/Advanced-Options
+  - default
+
+:schedule:
+  seed_database:
+    cron: "*/1 * * * *"  # Runs every minute
+    class: "FakeJob"
+    queue: default

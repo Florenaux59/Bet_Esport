@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_080512) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_104814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,12 +55,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_080512) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "odd"
-    t.date "start_date"
+    t.datetime "start_date"
     t.bigint "team1_id", null: false
     t.bigint "team2_id", null: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "league"
+    t.string "serie"
     t.index ["game_id"], name: "index_matches_on_game_id"
     t.index ["team1_id"], name: "index_matches_on_team1_id"
     t.index ["team2_id"], name: "index_matches_on_team2_id"
@@ -85,6 +88,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_080512) do
     t.datetime "updated_at", null: false
     t.string "picture"
     t.integer "bank"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
