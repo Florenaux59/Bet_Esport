@@ -10,13 +10,13 @@
 Inventory.destroy_all
 User.destroy_all
 
-florent = User.new(email: "flo@gmail.com", password: "password", picture: "default-user", bank: 5000)
+florent = User.new(email: "flo@gmail.com", password: "password", picture: "default-user", bank: 20000)
 florent.save
 
-nicolas = User.new(email: "nico@gmail.com", password: "password", picture: "default-user", bank: 5000)
+nicolas = User.new(email: "nico@gmail.com", password: "password", picture: "default-user", bank: 20000)
 nicolas.save
 
-remi = User.new(email: "remi@gmail.com", password: "password", picture: "default-user", bank: 5000)
+remi = User.new(email: "remi@gmail.com", password: "password", picture: "default-user", bank: 20000)
 remi.save
 
 require 'uri'
@@ -73,7 +73,7 @@ counter = 1
     if match_vl["opponents"].present? && match_vl["opponents"][0] && match_vl["opponents"][1]
       team1 = Team.find_by(team_name: match_vl["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_vl["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
+      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
     end
   end
   counter += 1
@@ -123,7 +123,7 @@ matches_rl.each do |match_rl|
   if match_rl["opponents"].present? && match_rl["opponents"][0] && match_rl["opponents"][1]
     team1 = Team.find_by(team_name: match_rl["opponents"][0]["opponent"]["name"])
     team2 = Team.find_by(team_name: match_rl["opponents"][1]["opponent"]["name"])
-    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, status: match_rl["status"], league: match_rl["league"]["name"], serie: match_rl["serie"]["full_name"])
+    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_rl["status"], league: match_rl["league"]["name"], serie: match_rl["serie"]["full_name"])
   end
 end
 puts "---------------------------fin création match rl --------------------------"
@@ -173,7 +173,7 @@ counter = 1
     if match_lol["opponents"].present? && match_lol["opponents"][0] && match_lol["opponents"][1]
       team1 = Team.find_by(team_name: match_lol["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_lol["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol, status: match_lol["status"], league: match_lol["league"]["name"], serie: match_lol["serie"]["full_name"])
+      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_lol["status"], league: match_lol["league"]["name"], serie: match_lol["serie"]["full_name"])
     end
   end
   counter += 1

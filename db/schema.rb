@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_104814) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.integer "odd"
+    t.string "odd"
     t.datetime "start_date"
     t.bigint "team1_id", null: false
     t.bigint "team2_id", null: false

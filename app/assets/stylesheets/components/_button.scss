@@ -20,3 +20,41 @@
 .button p {
   margin-top: none !important;
 }
+
+.button_equiped{
+  background-color: #FF7D29;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button_equiped:hover{
+  opacity: 0.8;
+}
+
+.button_desequiped{
+  background-color: #ea2b2b;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button_desequiped:hover{
+  opacity: 0.8;
+}

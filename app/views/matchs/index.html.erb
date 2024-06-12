@@ -33,44 +33,76 @@
 
 
 
-  <div class="cards">
+  <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
 
 
-  <% @matchs.each do |match| %>
-  <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
+    <% @matchs.each do |match| %>
+    <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
 
-    <div class="top_element_card">
+      <div class="top_element_card">
 
-      <%= image_tag("lol-img-i.png", alt: "lol",class: "img_game") %>
-      <div>
-          <h4 class="game_title"><%= match.game.name %></h4>
-          <h4><%= match.league %> - <%= match.serie %></h4>
-          <p class="date"><%= match.start_date.strftime("%d/%m/%Y %k:%M") %></p>
-      </div>
+        <%case match.game.js_slug %>
+        <%when "leagueoflegends"%>
+          <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+        <%when "rl"%>
+          <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
+        <%else%>
+          <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
+        <%end %>
 
 
-    </div>
-        <div class="team_match">
-
-          <div class="team1"><%= match.team1.team_name %>
-            <% unless match.team1.picture.nil? %>
-              <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
-            <% else %>
-                <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
-            <% end %>
-          </div>
-
-          <div class="team2">
-            <% unless match.team2.picture.nil? %>
-              <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
-              <% else %>
-                  <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
-              <% end %>
-              <%= match.team2.team_name %>
-          </div>
+        <div>
+            <h4 class="game_title"><%= match.game.name %></h4>
+            <h4><%= match.league %> - <%= match.serie %></h4>
+            <p class="date"><%= match.start_date.strftime("%d/%m/%Y %k:%M") %></p>
         </div>
+
+
+      </div>
+          <div class="team_match">
+
+            <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
+              <% unless match.team1.picture.nil? %>
+                <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
+              <% else %>
+                  <%= image_tag("img-default-logo", alt: "team", class: "picture_team") %>
+              <% end %>
+            </div>
+
+            <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
+              <% unless match.team2.picture.nil? %>
+                <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
+                <% else %>
+                    <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
+                <% end %>
+                <%= match.team2.team_name %>
+              </div>
+          </div>
+
     </div>
     <% end %>
+
+    <div class="d-none panier" data-add-bets-basket-target="display">
+
+              <h2 class="title_panier">Panier</h2>
+
+              <div class="block_game">
+                  <%= image_tag("lol-img-i.png", alt: "lol", class: "img_panier") %>
+                <h4>League of Legends</h4>
+
+              <div class="trait_croix"></div>
+           </div>
+
+              <div class="trait_croix_bas"></div>
+              <h3 class="">équipe1</h3>
+                <h3 class="">équipe2</h3>
+
+                <div class="trait_right"></div>
+                <div class="trait_left"></div>
+                <div class="trait_bot"></div>
+                <div class="trait_pencher"></div>
+
+        </div>
 
   </div>
 
