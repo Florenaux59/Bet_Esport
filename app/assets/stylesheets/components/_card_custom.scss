@@ -1,40 +1,44 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
   margin-top: 7%;
   grid-row-gap: 100px;
   margin-right: 1%;
   margin-left: 1%;
 }
-.card_custom{
+
+.card_custom {
   border: solid 2px #FF7D29;
   border-radius: 10px;
   padding: 4%;
 }
-.img_game{
-  height: 80px;
-  }
 
-.top_element_card{
-float: right;
-display: flex;
-justify-content: space-between;
-width: 100%;
+.img_game {
+  height: 80px;
 }
-.game_title{
+
+.top_element_card {
+  float: right;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.game_title {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
 
-.date{
+.date {
   float: right;
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
-.team_match{
+
+.team_match {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -42,7 +46,7 @@ width: 100%;
   padding: 3%;
   height: 65%;
 
-  .team1{
+  .team1 {
     width: 48%;
     background-color: #FFEEA9;
     border-radius: 10px;
@@ -57,7 +61,8 @@ width: 100%;
     font-style: normal;
 
   }
-  .team2{
+
+  .team2 {
     width: 48%;
     background-color: #FFEEA9;
     border-radius: 10px;
@@ -74,6 +79,6 @@ width: 100%;
   }
 }
 
-.picture_team{
+.picture_team {
   height: 30px;
 }
