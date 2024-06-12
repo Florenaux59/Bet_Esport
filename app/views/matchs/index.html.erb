@@ -1,6 +1,6 @@
 <div data-controller="games">
 
-
+<div data-controller="add-bets-basket">
 
 
 
@@ -33,10 +33,14 @@
 
 
 
-  <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
+  <div class="cards" data-add-bets-basket-target="cards">
 
 
-    <% @matchs.each do |match| %>
+      <%@matchs.each_with_index do |match, idx|%>
+
+
+      <% until idx == 4 %>
+
     <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
 
       <div class="top_element_card">
@@ -80,7 +84,10 @@
 
     </div>
     <% end %>
+    <% end %>
 
+
+  </div>
     <div class="d-none panier" data-add-bets-basket-target="display">
 
               <h2 class="title_panier">Panier</h2>
@@ -93,8 +100,7 @@
            </div>
 
               <div class="trait_croix_bas"></div>
-              <h3 class="">équipe1</h3>
-                <h3 class="">équipe2</h3>
+
 
                 <div class="trait_right"></div>
                 <div class="trait_left"></div>
@@ -102,7 +108,5 @@
                 <div class="trait_pencher"></div>
 
         </div>
-
-  </div>
-
-</div>
+       </div>
+      </div>
