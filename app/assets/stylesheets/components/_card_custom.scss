@@ -6,7 +6,7 @@
   grid-row-gap: 100px;
   margin-right: 1%;
   margin-left: 1%;
-  // width: 100%;
+   width: 100%;
   height: 100%;
 }
 
@@ -98,10 +98,11 @@
 50% { color:rgb(235, 81, 81); }
 }
 
-.game_info {
+.game-info {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-size: 100%;
 }
 
 .game_date{

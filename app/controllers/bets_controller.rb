@@ -6,7 +6,9 @@ class BetsController < ApplicationController
     @bet = Bet.new(params_bets)
     @bet.user = current_user
     if @bet.save
+      current_user.bank -= params[:bet][:place_money].to_i
       redirect_to matchs_path
+      current_user.save
     else
       raise
     end
