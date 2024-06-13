@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="addbetspanier"
 export default class extends Controller {
-  static targets = ["team1", "team2", "cards", "display", "title_game", "team1_title", "team2_title", "img_team1", "img_team2"]
+  static targets = ["team1", "team2", "cards", "display", "title_game", "team1_title", "team2_title", "img_team1", "img_team2", "odd"]
   connect() {
     console.log("hello");
   }
@@ -17,10 +17,13 @@ export default class extends Controller {
     this.img_team1Target.setAttribute("src", data.team1.picture)
     this.img_team2Target.setAttribute("src", data.team2.picture)
     console.log(event.currentTarget.dataset.teamNumber)
+    let odd = 0;
     if (event.currentTarget.dataset.teamNumber === "1") {
       odd = data.team1.odd
     } else if (event.currentTarget.dataset.teamNumber === "2") {
       odd = data.team2.odd
     }
+    this.oddTarget.innerText = odd
+
   }
 }
