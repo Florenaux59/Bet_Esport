@@ -3,8 +3,8 @@ width: 20%;
 height: 400px;
 margin: 0 auto;
 top: 150px;
-position: relative;
-
+position: sticky;
+top: 0.5;
 }
 .display_none{
 display: none;
@@ -89,5 +89,7 @@ padding-left: 2%;
   position: absolute;
   left: 52%;
   top: 37%;
-
+}
+.img_team{
+height: 20px;
 }

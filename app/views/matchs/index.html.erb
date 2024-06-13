@@ -31,17 +31,15 @@
 
   <h1 class="title_match">Matchs à venir :</h1>
 
-
+  <div class="d-flex">
 
   <div class="cards" data-add-bets-basket-target="cards">
 
 
-      <%@matchs.each_with_index do |match, idx|%>
+      <%@matchs.each do |match|%>
 
 
-      <% until idx == 4 %>
-
-    <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
+    <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card" data-match="<%=match.infos_match%>">
 
       <div class="top_element_card">
 
@@ -64,7 +62,7 @@
       </div>
           <div class="team_match">
 
-            <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
+            <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket"><%= match.team1.team_name %>
               <% unless match.team1.picture.nil? %>
                 <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
               <% else %>
@@ -72,7 +70,7 @@
               <% end %>
             </div>
 
-            <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
+            <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket">
               <% unless match.team2.picture.nil? %>
                 <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
                 <% else %>
@@ -83,22 +81,40 @@
           </div>
 
     </div>
-    <% end %>
+
     <% end %>
 
 
   </div>
     <div class="d-none panier" data-add-bets-basket-target="display">
 
+
+
               <h2 class="title_panier">Panier</h2>
 
               <div class="block_game">
                   <%= image_tag("lol-img-i.png", alt: "lol", class: "img_panier") %>
-                <h4>League of Legends</h4>
+                <h4 data-add-bets-basket-target="title_game"></h4>
+
 
               <div class="trait_croix"></div>
            </div>
 
+           <div class="title_team_name">
+
+                 <h4 data-add-bets-basket-target="team1_title"></h4>
+                <img class="img_team" alt="" data-add-bets-basket-target="img_team1">
+                 <h4 data-add-bets-basket-target="team2_title"></h4>
+                <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
+
+          </div>
+          <div class="gains">
+
+
+
+
+
+  </div>
               <div class="trait_croix_bas"></div>
 
 

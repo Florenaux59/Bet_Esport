@@ -123,7 +123,7 @@ matches_rl.each do |match_rl|
   if match_rl["opponents"].present? && match_rl["opponents"][0] && match_rl["opponents"][1]
     team1 = Team.find_by(team_name: match_rl["opponents"][0]["opponent"]["name"])
     team2 = Team.find_by(team_name: match_rl["opponents"][1]["opponent"]["name"])
-    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket)
+    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}")
   end
 end
 puts "---------------------------fin création match rl --------------------------"
@@ -173,7 +173,7 @@ counter = 1
     if match_lol["opponents"].present? && match_lol["opponents"][0] && match_lol["opponents"][1]
       team1 = Team.find_by(team_name: match_lol["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_lol["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol)
+      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}")
     end
   end
   counter += 1
