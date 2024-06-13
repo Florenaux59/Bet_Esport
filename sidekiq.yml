@@ -1,11 +1,13 @@
 :concurrency: 5
+:timeout: 60
+:verbose: true
 :queues:
   # Queue priority:
   # https://github.com/sidekiq/sidekiq/wiki/Advanced-Options
   - default
-:scheduler:
-  :schedule:
-    seed_database:
-      cron: "0 */3 * * *"  # Runs every minute
-      class: MatchsController
-      queue: default
+# :scheduler:
+#   :schedule:
+#     seed_database:
+#       cron: "0 */3 * * *"  # Runs every minute
+#       class: MatchsController
+#       queue: default

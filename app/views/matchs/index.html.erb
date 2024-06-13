@@ -22,65 +22,6 @@
   </div>
 
   </div>
-  <div>
-    <h1 class="title_match">Matchs en cours :</h1>
-
-    <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
-
-      <% @matchs.each do |match| %>
-        <% if match.status == "running" %>
-
-          <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
-
-            <div class="top_element_card">
-
-              <%case match.game.js_slug %>
-              <%when "leagueoflegends"%>
-                <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
-              <%when "rl"%>
-                <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
-              <%else%>
-                <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
-              <%end %>
-
-              <div>
-                  <h4 class="game_title"><%= match.game.name %></h4>
-                  <h5><%= match.league %> - <%= match.serie %></h5>
-                  <p class="date"><%= match.start_date.strftime("%d/%m/%Y %k:%M") %></p>
-                  <p class="running">En cours</p>
-              </div>
-
-
-            </div>
-                <div class="team_match">
-
-                  <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>>
-                    <% unless match.team1.picture.nil? %>
-                      <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
-                    <% else %>
-                      <%= image_tag("img-default-logo", alt: "team", class: "picture_team") %>
-                    <% end %>
-                      <%= match.team1.team_name %>
-                      <h1><%= match.score_team1 %></h1>
-                  </div>
-                  <div><h2>VS</h2></div>
-                  <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
-                    <%= match.team2.team_name %>
-                    <% unless match.team2.picture.nil? %>
-                      <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
-                    <% else %>
-                      <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
-                    <% end %>
-                     <h1><%= match.score_team2 %></h1>
-                  </div>
-                </div>
-            </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-
   <h1 class="title_match">Matchs à venir :</h1>
 
   <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
@@ -102,8 +43,8 @@
 
             <div>
                 <h4 class="game_title"><%= match.game.name %></h4>
-                <h5><%= match.league %> - <%= match.serie %></h5>
-                <p class="date"><%= match.start_date.strftime("%d/%m/%Y %k:%M") %></p>
+                <h5 class="game-info"><%= match.league %></h5>
+                <h5 class="game-info"><%= match.serie %> - <%= match.start_date.strftime("%d/%m/%Y %k:%M") %></h5>
             </div>
 
 
