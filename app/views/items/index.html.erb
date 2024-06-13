@@ -19,7 +19,7 @@
         <%= image_tag item.picture, class: "img_characters" %>
             <div class="card-product-infos">
               <h2><%= item.name %></h2>
-              <p><strong><%= item.price %></strong><%= image_tag("cash.png", alt: "cash", class: "img_cash")%></p>
+              <p><strong><%= item.price %></strong><%= image_tag("cash", alt: "cash", class: "img_cash")%></p>
               <% if item.price <= current_user.bank && !current_user.inventories.exists?(item: item) %>
                 <button type="button" class="button_equiped" data-bs-toggle="modal" data-bs-target="#itemModal<%= item.id %>">Acheter</button>
               <% elsif item.price >= current_user.bank && !current_user.inventories.exists?(item: item)  %>
