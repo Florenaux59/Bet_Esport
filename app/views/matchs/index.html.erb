@@ -48,12 +48,11 @@
                 <%end %>
 
 
-            <div>
+            <div class= card_info_title>
                 <h4 class="game_title"><%= match.game.name %></h4>
                 <h5 class="game-info"><%= match.league %></h5>
-
-                <h5 class="game-info"><%= match.serie %> - <%= match.start_date.strftime("%d/%m/%Y %k:%M") %></h5>
-
+                <h5 class="game-info"><%= match.serie %></h5>
+                <h5 class= "game_date"><%= match.start_date.strftime("%d/%m/%Y - %k:%M") %></h5>
             </div>
 
 
@@ -101,6 +100,13 @@
           <h4 data-add-bets-basket-target="team2_title"></h4>
           <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
           <h4 data-add-bets-basket-target="odd"></h4>
+
+          <%= simple_form_for [@, @bookmark ] do |f|%>
+            <%= f.association :movie %>
+            <%= f.input :comment %>
+            <%= f.submit %>
+          <%end%>
+
 
       </div>
       <div class="gains">

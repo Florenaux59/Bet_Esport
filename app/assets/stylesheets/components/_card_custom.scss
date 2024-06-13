@@ -23,10 +23,13 @@
 }
 
 .top_element_card {
-  float: right;
+  float: left;
   display: flex;
-  justify-content: space-between;
   width: 100%;
+}
+
+.card_info_title{
+  margin-left: 5%;
 }
 
 .game_title {
@@ -45,7 +48,7 @@
   height: 65%;
 
   .team1 {
-    width: 48%;
+    width: 48%; height: 75%;
     background-color: #FFEEA9;
     border-radius: 10px;
     border: solid 1px #FFEEA9;
@@ -54,6 +57,7 @@
     align-items: center;
     padding: 3%;
     max-height: 100%;
+    text-align: left;
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -61,7 +65,7 @@
   }
 
   .team2 {
-    width: 48%;
+    width: 48%; height: 75%;
     background-color: #FFEEA9;
     border-radius: 10px;
     border: solid 1px #FFEEA9;
@@ -98,4 +102,11 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.game_date{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: medium;
 }
