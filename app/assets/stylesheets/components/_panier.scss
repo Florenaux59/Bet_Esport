@@ -93,3 +93,31 @@ padding-left: 2%;
 .img_team{
 height: 20px;
 }
+.team_block_1{
+  height: 10px;
+  position: absolute;
+  top: 38%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 45%;
+}
+.title_team1{
+  font-size: 0.7rem;
+}
+.team_block_2{
+  height: 10px;
+  position: absolute;
+  top: 38%;
+  display: flex;
+  justify-content: space-evenly;
+  right: 0;
+  width: 45%;
+
+}
+.title_team2{
+  font-size: 0.7rem;
+}
+.form_money{
+  position: absolute;
+  top: 70%;
+}

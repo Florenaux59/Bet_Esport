@@ -78,7 +78,7 @@ counter = 1
     if match_vl["opponents"].present? && match_vl["opponents"][0] && match_vl["opponents"][1]
       team1 = Team.find_by(team_name: match_vl["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_vl["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, api_id: match_vl["id"], odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
+      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, api_id: match_vl["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
     end
   end
   counter += 1
@@ -195,7 +195,7 @@ Item.create!(name: "La Japonaise", picture: "japonaise", price: "1500")
 Item.create!(name: "Le Combatant", picture: "combatant", price: "5500")
 Item.create!(name: "La Footbaleuse", picture: "footbaleuse", price: "10000")
 Item.create!(name: "Le Clown", picture: "clown", price: "3000")
-Item.create!(name: "La Karateka", picture: "karatéka", price: "3500")
+Item.create!(name: "La Karateka", picture: "karateka", price: "3500")
 Item.create!(name: "Le Capitaine", picture: "capitaine", price: "4000")
 
 p Item.all.size

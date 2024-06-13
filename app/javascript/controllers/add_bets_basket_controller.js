@@ -23,7 +23,7 @@ export default class extends Controller {
     } else if ( teamNumber === "2") {
       odd = data.team2.odd
     }
-    this.oddTarget.innerText = odd
+    this.oddTarget.innerText = `côte ${odd}`
     this.match_inputTarget.value = data.id
     this.team_numberTarget.value = teamNumber
 

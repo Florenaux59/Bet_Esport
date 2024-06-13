@@ -6,17 +6,17 @@
 
       <div class="games" data-games-target="games">
         <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
-          <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
+          <%= image_tag("lol-img-i", alt: "lol", height: 165)%>
           <h2 class="game_title">League of Legends</h2>
         </div>
 
         <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
-          <%= image_tag("rocket-league-img.png", alt: "rocket", height: 165)%>
+          <%= image_tag("rocket-league-img", alt: "rocket", height: 165)%>
           <h2 class="game_title">Rocket League</h2>
         </div>
 
         <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
-          <%= image_tag("valorant-img.png", alt: "valorant", height: 165)%>
+          <%= image_tag("valorant-img", alt: "valorant", height: 165)%>
           <h2 class="game_title">Valorant</h2>
         </div>
       </div>
@@ -40,9 +40,9 @@
 
                 <%case match.game.js_slug %>
                 <%when "leagueoflegends"%>
-                  <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_game") %>
                 <%when "rl"%>
-                  <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
+                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_game") %>
                 <%else%>
                   <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
                 <%end %>
@@ -88,28 +88,44 @@
         <h2 class="title_panier">Panier</h2>
 
         <div class="block_game">
-            <%= image_tag("lol-img-i.png", alt: "lol", class: "img_panier") %>
+
+                <%case @matchs.game.js_slug %>
+
+                <%when "leagueoflegends"%>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier") %>
+                <%when "rl"%>
+                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_panier") %>
+                <%else%>
+                  <%= image_tag("valorant-img", alt: "lol", class: "img_panier") %>
+                <%end %>
+
           <h4 data-add-bets-basket-target="title_game"></h4>
           <div class="trait_croix"></div>
         </div>
 
-        <div class="title_team_name">
+          <div class="team_block_1">
+            <h4 class="title_team1" data-add-bets-basket-target="team1_title"></h4>
+            <img class="img_team" alt="" data-add-bets-basket-target="img_team1">
+          </div>
 
-          <h4 data-add-bets-basket-target="team1_title"></h4>
-          <img class="img_team" alt="" data-add-bets-basket-target="img_team1">
-          <h4 data-add-bets-basket-target="team2_title"></h4>
-          <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
+           <div class="team_block_2">
+              <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
+              <h4 class="title_team2" data-add-bets-basket-target="team2_title"></h4>
+            </div>
+
+
+        <div class="form_money">
           <h4 data-add-bets-basket-target="odd"></h4>
-
           <%= simple_form_for  @bet  do |f|%>
             <%= f.input :place_money %>
             <%= f.input :match_id, label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "match_input"}} %>
             <%= f.input :team_number,label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "team_number"}} %>
-            <%= f.submit %>
+            <%= link_to "Retour", matchs_path%>
+            <%= f.submit 'Envoye', class: "btn"%>
           <%end%>
 
-
       </div>
+
       <div class="gains">
       </div>
       <div class="trait_croix_bas"></div>
@@ -117,6 +133,6 @@
       <div class="trait_left"></div>
       <div class="trait_bot"></div>
       <div class="trait_pencher"></div>
-      </div>
+          </div>
   </div>
 </div>
