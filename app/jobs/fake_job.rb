@@ -5,20 +5,41 @@ class FakeJob < ApplicationJob
   require 'json'
 
   def perform
-    Match.first.each do |match|
+    # counter = 0
+    Match.all.each do |match|
+      if match.status == "not_started" && match.start_date < Time.now
+        # counter += 1
+        # p counter
 
-    url = URI("https://api.pandascore.co/matches/#{match.api_id}")
+        url = URI("https://api.pandascore.co/matches/#{match.api_id}")
 
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
 
-    request = Net::HTTP::Get.new(url)
-    request["accept"] = 'application/json'
-    request["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+        request = Net::HTTP::Get.new(url)
+        request["accept"] = 'application/json'
 
-    response = http.request(request)
-    puts response.read_body
-    match.update!(status: response.read_body["status"], winner_id: response.read_body["winner"]["id"])
+        request["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
+
+        response = http.request(request)
+
+
+
+
+        # http = Net::HTTP.new(url.host, url.port)
+        # http.use_ssl = true
+
+        # request = Net::HTTP::Get.new(url)
+        # request["accept"] = 'application/json'
+        # request["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
+
+        data = JSON.parse(response.read_body)
+
+        # puts data
+        if data["results"].size > 0
+          match.update!(status:data["status"], score_team1:data["results"][0]["score"] , score_team2:data["results"][1]["score"])
+        end
+      end
     end
   end
 end
