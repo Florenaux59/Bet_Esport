@@ -20,21 +20,21 @@
     </div>
       <div id="trait_cote"></div>
         <% unless current_user.nil? %>
-        <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white.png", alt: "cash", class: "img_cash_white")%> </h5>
+        <h5 class="bank_text"><b><%= current_user.bank %></b><%= image_tag("cash_white", alt: "cash", class: "img_cash_white")%> </h5>
         <% end %>
-        <%= image_tag("logoblanc.png", class:"logo") %>
+        <%= image_tag("logoblanc", class:"logo") %>
       </div>
     <div class="part_right_navbar">
       <%= link_to matchs_path, class:"text-decoration-none text-white m-2" do %>
         <div class="paris">
-          <%= image_tag("piece-de-monnaie.png", alt: "pièce-de-monnaie", height: 26)%>
+          <%= image_tag("piece-de-monnaie", alt: "pièce-de-monnaie", height: 26)%>
           <h3 class="link_to_text">Paris</h3>
         </div>
       <% end %>
       <div class="boutique">
       <%= link_to items_path, class:"text-decoration-none text-white m-2" do %>
         <div class="paris">
-          <%= image_tag("boutique.png", alt: "boutique", height: 26)%>
+          <%= image_tag("boutique", alt: "boutique", height: 26)%>
           <h3 class="link_to_text"> Boutique</h3>
         </div>
       <% end %>

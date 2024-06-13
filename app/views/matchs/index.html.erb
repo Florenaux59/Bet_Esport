@@ -5,17 +5,17 @@
 
 
     <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
-      <%= image_tag("lol-img-i.png", alt: "lol", height: 165)%>
+      <%= image_tag("lol-img-i", alt: "lol", height: 165)%>
       <h2 class="game_title">League of Legends</h2>
     </div>
 
     <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
-      <%= image_tag("rocket-league-img.png", alt: "rocket", height: 165)%>
+      <%= image_tag("rocket-league-img", alt: "rocket", height: 165)%>
       <h2 class="game_title">Rocket League</h2>
     </div>
 
     <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
-      <%= image_tag("valorant-img.png", alt: "valorant", height: 165)%>
+      <%= image_tag("valorant-img", alt: "valorant", height: 165)%>
       <h2 class="game_title">Valorant</h2>
     </div>
 
@@ -34,17 +34,18 @@
 
             <%case match.game.js_slug %>
             <%when "leagueoflegends"%>
-              <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+              <%= image_tag("lol-img-i", alt: "lol", class: "img_game") %>
             <%when "rl"%>
-              <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
+              <%= image_tag("rocket-league-img", alt: "lol", class: "img_game") %>
             <%else%>
               <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
             <%end %>
 
-            <div>
+            <div class= card_info_title>
                 <h4 class="game_title"><%= match.game.name %></h4>
                 <h5 class="game-info"><%= match.league %></h5>
-                <h5 class="game-info"><%= match.serie %> - <%= match.start_date.strftime("%d/%m/%Y %k:%M") %></h5>
+                <h5 class="game-info"><%= match.serie %></h5>
+                <h5 class= "game_date"><%= match.start_date.strftime("%d/%m/%Y - %k:%M") %></h5>
             </div>
 
 
@@ -78,7 +79,7 @@
               <h2 class="title_panier">Panier</h2>
 
               <div class="block_game">
-                  <%= image_tag("lol-img-i.png", alt: "lol", class: "img_panier") %>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier") %>
                 <h4>League of Legends</h4>
 
               <div class="trait_croix"></div>
