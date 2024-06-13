@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
     t.bigint "match_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_number"
     t.index ["match_id"], name: "index_bets_on_match_id"
   end
 
