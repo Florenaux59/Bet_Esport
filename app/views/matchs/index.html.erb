@@ -1,45 +1,52 @@
 <div data-controller="games">
-  <div class="d-flex justify-content-end w-100">
 
-    <div class="games" data-games-target="games">
+  <div data-controller="add-bets-basket">
 
+    <div class="d-flex justify-content-end w-100">
 
-    <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
-      <%= image_tag("lol-img-i", alt: "lol", height: 165)%>
-      <h2 class="game_title">League of Legends</h2>
+      <div class="games" data-games-target="games">
+        <div class="league_games active_lol" data-action="click->games#lol" data-games-target="lol">
+          <%= image_tag("lol-img-i", alt: "lol", height: 165)%>
+          <h2 class="game_title">League of Legends</h2>
+        </div>
+
+        <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
+          <%= image_tag("rocket-league-img", alt: "rocket", height: 165)%>
+          <h2 class="game_title">Rocket League</h2>
+        </div>
+
+        <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
+          <%= image_tag("valorant-img", alt: "valorant", height: 165)%>
+          <h2 class="game_title">Valorant</h2>
+        </div>
+      </div>
+
     </div>
+    <h1 class="title_match">Matchs à venir :</h1>
 
-    <div class="rocket_games border_rocket_left" data-action="click->games#rocket" data-games-target="rocket">
-      <%= image_tag("rocket-league-img", alt: "rocket", height: 165)%>
-      <h2 class="game_title">Rocket League</h2>
-    </div>
+    <div class="d-flex">
 
-    <div class="valorant_games" data-action="click->games#valorant" data-games-target="valorant">
-      <%= image_tag("valorant-img", alt: "valorant", height: 165)%>
-      <h2 class="game_title">Valorant</h2>
-    </div>
+      <div class="cards" data-add-bets-basket-target="cards">
 
-  </div>
 
-  </div>
-  <h1 class="title_match">Matchs à venir :</h1>
+        <%@matchs.each do |match|%>
 
-  <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
 
-    <% @matchs.each do |match| %>
-      <% if match.status == "not_started" %>
-        <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
 
-          <div class="top_element_card">
+          <% if match.status == "not_started" %>
+            <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card" data-match="<%=match.infos_match%>">
 
-            <%case match.game.js_slug %>
-            <%when "leagueoflegends"%>
-              <%= image_tag("lol-img-i", alt: "lol", class: "img_game") %>
-            <%when "rl"%>
-              <%= image_tag("rocket-league-img", alt: "lol", class: "img_game") %>
-            <%else%>
-              <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
-            <%end %>
+              <div class="top_element_card">
+
+                <%case match.game.js_slug %>
+                <%when "leagueoflegends"%>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_game") %>
+                <%when "rl"%>
+                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_game") %>
+                <%else%>
+                  <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
+                <%end %>
+
 
             <div class= card_info_title>
                 <h4 class="game_title"><%= match.game.name %></h4>
@@ -49,10 +56,9 @@
             </div>
 
 
-          </div>
+            </div>
               <div class="team_match">
-
-                <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
+                <div class="team1" data-add-bets-basket-target="team1" data-team-number="1" data-action="click->add-bets-basket#basket"><%= match.team1.team_name %>
                   <% unless match.team1.picture.nil? %>
                     <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
                   <% else %>
@@ -60,7 +66,7 @@
                   <% end %>
                 </div>
 
-                <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
+                <div class="team2" data-add-bets-basket-target="team2" data-team-number="2" data-action="click->add-bets-basket#basket">
                   <% unless match.team2.picture.nil? %>
                     <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
                     <% else %>
@@ -69,33 +75,59 @@
                     <%= match.team2.team_name %>
                   </div>
               </div>
-        </div>
-      <% end %>
-    <% end %>
+
+            </div>
+          <%end%>
+
+        <% end %>
 
 
-    <div class="d-none panier" data-add-bets-basket-target="display">
+      </div>
+      <div class="d-none panier" data-add-bets-basket-target="display">
 
-              <h2 class="title_panier">Panier</h2>
+        <h2 class="title_panier">Panier</h2>
 
-              <div class="block_game">
-                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier") %>
-                <h4>League of Legends</h4>
+        <div class="block_game">
 
-              <div class="trait_croix"></div>
-           </div>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_lol"}) %>
+                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_rl"}) %>
+                  <%= image_tag("valorant-img", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_valorant"}) %>
 
-              <div class="trait_croix_bas"></div>
-              <h3 class="">équipe1</h3>
-                <h3 class="">équipe2</h3>
 
-                <div class="trait_right"></div>
-                <div class="trait_left"></div>
-                <div class="trait_bot"></div>
-                <div class="trait_pencher"></div>
-
+          <h4 data-add-bets-basket-target="title_game"></h4>
+          <div class="trait_croix"></div>
         </div>
 
+          <div class="team_block_1">
+            <h4 class="title_team1" data-add-bets-basket-target="team1_title"></h4>
+            <img class="img_team" alt="" data-add-bets-basket-target="img_team1">
+          </div>
+
+           <div class="team_block_2">
+              <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
+              <h4 class="title_team2" data-add-bets-basket-target="team2_title"></h4>
+            </div>
+
+
+        <div class="form_money">
+          <h4 data-add-bets-basket-target="odd"></h4>
+          <%= simple_form_for  @bet  do |f|%>
+            <%= f.input :place_money %>
+            <%= f.input :match_id, label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "match_input"}} %>
+            <%= f.input :team_number,label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "team_number"}} %>
+            <%= link_to "Retour", matchs_path%>
+            <%= f.submit 'Envoye', class: "btn"%>
+          <%end%>
+
+      </div>
+
+      <div class="gains">
+      </div>
+      <div class="trait_croix_bas"></div>
+      <div class="trait_right"></div>
+      <div class="trait_left"></div>
+      <div class="trait_bot"></div>
+      <div class="trait_pencher"></div>
+          </div>
   </div>
-
 </div>

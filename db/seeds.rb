@@ -9,6 +9,7 @@
 #   end
 
 puts "------------------------------------ START ----------------------------------"
+Bet.destroy_all
 Team.destroy_all
 Game.destroy_all
 Match.destroy_all
@@ -78,7 +79,7 @@ counter = 1
     if match_vl["opponents"].present? && match_vl["opponents"][0] && match_vl["opponents"][1]
       team1 = Team.find_by(team_name: match_vl["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_vl["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, api_id: match_vl["id"], odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
+      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, api_id: match_vl["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
     end
   end
   counter += 1
@@ -127,7 +128,8 @@ matches_rl.each do |match_rl|
   if match_rl["opponents"].present? && match_rl["opponents"][0] && match_rl["opponents"][1]
     team1 = Team.find_by(team_name: match_rl["opponents"][0]["opponent"]["name"])
     team2 = Team.find_by(team_name: match_rl["opponents"][1]["opponent"]["name"])
-    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, api_id: match_rl["id"], odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_rl["status"], league: match_rl["league"]["name"], serie: match_rl["serie"]["full_name"])
+
+    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, api_id: match_rl["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_rl["status"], league: match_rl["league"]["name"], serie: match_rl["serie"]["full_name"])
   end
 end
 puts "---------------------------fin création upcoming_match rl --------------------------"
@@ -177,7 +179,7 @@ counter = 1
     if match_lol["opponents"].present? && match_lol["opponents"][0] && match_lol["opponents"][1]
       team1 = Team.find_by(team_name: match_lol["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_lol["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol,api_id: match_lol["id"], odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_lol["status"], league: match_lol["league"]["name"], serie: match_lol["serie"]["full_name"])
+      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol,api_id: match_lol["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_lol["status"], league: match_lol["league"]["name"], serie: match_lol["serie"]["full_name"])
     end
   end
   counter += 1

@@ -19,7 +19,7 @@ class FakeJob < ApplicationJob
         request = Net::HTTP::Get.new(url)
         request["accept"] = 'application/json'
 
-        request["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
+       request["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
         response = http.request(request)
 
