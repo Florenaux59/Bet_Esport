@@ -194,7 +194,7 @@ Item.create!(name: "La Japonaise", picture: "japonaise", price: "1500")
 Item.create!(name: "Le Combatant", picture: "combatant", price: "5500")
 Item.create!(name: "La Footbaleuse", picture: "footbaleuse", price: "10000")
 Item.create!(name: "Le Clown", picture: "clown", price: "3000")
-Item.create!(name: "La Karateka", picture: "karatéka", price: "3500")
+Item.create!(name: "La Karateka", picture: "karateka", price: "3500")
 Item.create!(name: "Le Capitaine", picture: "capitaine", price: "4000")
 
 p Item.all.size
