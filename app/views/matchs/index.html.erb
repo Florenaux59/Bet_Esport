@@ -59,7 +59,7 @@
 
             </div>
               <div class="team_match">
-                <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket"><%= match.team1.team_name %>
+                <div class="team1" data-add-bets-basket-target="team1" data-team-number="1" data-action="click->add-bets-basket#basket"><%= match.team1.team_name %>
                   <% unless match.team1.picture.nil? %>
                     <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
                   <% else %>
@@ -67,7 +67,7 @@
                   <% end %>
                 </div>
 
-                <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket">
+                <div class="team2" data-add-bets-basket-target="team2" data-team-number="2" data-action="click->add-bets-basket#basket">
                   <% unless match.team2.picture.nil? %>
                     <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
                     <% else %>
