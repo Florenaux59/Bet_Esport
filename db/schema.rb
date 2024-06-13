@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "game_id"
+    t.bigint "game_id", null: false
     t.integer "api_id"
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
