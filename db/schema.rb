@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_131707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +22,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
     t.bigint "match_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_number"
+    t.bigint "user_id", null: false
     t.index ["match_id"], name: "index_bets_on_match_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -78,7 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "game_id"
+    t.bigint "game_id", null: false
     t.integer "api_id"
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
@@ -99,6 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
   end
 
   add_foreign_key "bets", "matches"
+  add_foreign_key "bets", "users"
   add_foreign_key "inventories", "items"
   add_foreign_key "inventories", "users"
   add_foreign_key "matches", "games"
