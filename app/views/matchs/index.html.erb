@@ -1,10 +1,4 @@
 <div data-controller="games">
-
-
-
-
-
-
   <div class="d-flex justify-content-end w-100">
 
     <div class="games" data-games-target="games">
@@ -28,58 +22,56 @@
   </div>
 
   </div>
-
   <h1 class="title_match">Matchs à venir :</h1>
-
-
 
   <div class="cards" data-add-bets-basket-target="cards"  data-controller="add-bets-basket">
 
-
     <% @matchs.each do |match| %>
-    <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
+      <% if match.status == "not_started" %>
+        <div class="card_custom" data-games-target="<%=match.game.js_slug%>Card">
 
-      <div class="top_element_card">
+          <div class="top_element_card">
 
-        <%case match.game.js_slug %>
-        <%when "leagueoflegends"%>
-          <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
-        <%when "rl"%>
-          <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
-        <%else%>
-          <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
-        <%end %>
+            <%case match.game.js_slug %>
+            <%when "leagueoflegends"%>
+              <%= image_tag("lol-img-i.png", alt: "lol", class: "img_game") %>
+            <%when "rl"%>
+              <%= image_tag("rocket-league-img.png", alt: "lol", class: "img_game") %>
+            <%else%>
+              <%= image_tag("valorant-img", alt: "lol", class: "img_game") %>
+            <%end %>
 
-
-        <div>
-            <h4 class="game_title"><%= match.game.name %></h4>
-            <p class="date"><%= match.start_date %></p>
-        </div>
-
-
-      </div>
-          <div class="team_match">
-
-            <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
-              <% unless match.team1.picture.nil? %>
-                <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
-              <% else %>
-                  <%= image_tag("img-default-logo", alt: "team", class: "picture_team") %>
-              <% end %>
+            <div>
+                <h4 class="game_title"><%= match.game.name %></h4>
+                <h5 class="game-info"><%= match.league %></h5>
+                <h5 class="game-info"><%= match.serie %> - <%= match.start_date.strftime("%d/%m/%Y %k:%M") %></h5>
             </div>
 
-            <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
-              <% unless match.team2.picture.nil? %>
-                <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
-                <% else %>
-                    <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
-                <% end %>
-                <%= match.team2.team_name %>
-              </div>
-          </div>
 
-    </div>
+          </div>
+              <div class="team_match">
+
+                <div class="team1" data-add-bets-basket-target="team1" data-action="click->add-bets-basket#basket" data-team-one-id=<%= match.team1.id %>><%= match.team1.team_name %>
+                  <% unless match.team1.picture.nil? %>
+                    <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
+                  <% else %>
+                      <%= image_tag("img-default-logo", alt: "team", class: "picture_team") %>
+                  <% end %>
+                </div>
+
+                <div class="team2" data-add-bets-basket-target="team2" data-action="click->add-bets-basket#basket" data-team-two-id=<%= match.team2.id %>>
+                  <% unless match.team2.picture.nil? %>
+                    <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
+                    <% else %>
+                        <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
+                    <% end %>
+                    <%= match.team2.team_name %>
+                  </div>
+              </div>
+        </div>
+      <% end %>
     <% end %>
+
 
     <div class="d-none panier" data-add-bets-basket-target="display">
 
