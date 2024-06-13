@@ -1,11 +1,15 @@
 <div class="mx-auto" style="width: 400px; ">
-  <div class="d-flex justify-content-center mt-5 mb-2">
-    <h2>Information personnelle</h2>
+  <h2 class= "info_perso">Profil</h2>
+    <div class="d-flex justify-content-center mt-5 mb-2">
+    <% if current_user.inventories.exists?(status: 'equipped') %>
+          <%= image_tag current_user.inventories.find_by(status: 'equipped').item.picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+    </div>
+
+  <div class ="d-flex justify-content-center mt-5 mb-2">
+    <h3 class="email_info">Email :</h3>
+    <p class="email_user"><%= current_user.email %></p>
   </div>
-
-  <h3>Your email :</h3>
-  <p><%= current_user.email %></p>
-
-  <h3>Your password :</h3>
-  <p>*********************</p>
 </div>
