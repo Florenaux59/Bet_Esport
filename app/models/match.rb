@@ -5,6 +5,7 @@ class Match < ApplicationRecord
 
   def infos_match
     {
+      id: id,
       game: game.name,
       team1: {
         picture: team1.picture,

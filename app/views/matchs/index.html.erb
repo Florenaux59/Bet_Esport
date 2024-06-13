@@ -101,9 +101,10 @@
           <img class="img_team" alt="" data-add-bets-basket-target="img_team2">
           <h4 data-add-bets-basket-target="odd"></h4>
 
-          <%= simple_form_for [@, @bookmark ] do |f|%>
-            <%= f.association :movie %>
-            <%= f.input :comment %>
+          <%= simple_form_for  @bet  do |f|%>
+            <%= f.input :place_money %>
+            <%= f.input :match_id, label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "match_input"}} %>
+            <%= f.input :team_number,label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "team_number"}} %>
             <%= f.submit %>
           <%end%>
 
