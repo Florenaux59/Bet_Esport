@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_132934) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_122559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,12 +55,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_132934) do
 
   create_table "matches", force: :cascade do |t|
     t.string "odd"
-    t.date "start_date"
+    t.datetime "start_date"
     t.bigint "team1_id", null: false
     t.bigint "team2_id", null: false
     t.bigint "game_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "league"
+    t.string "serie"
+    t.integer "score_team1"
+    t.integer "score_team2"
+    t.integer "api_id"
+    t.integer "winner_id"
     t.index ["game_id"], name: "index_matches_on_game_id"
     t.index ["team1_id"], name: "index_matches_on_team1_id"
     t.index ["team2_id"], name: "index_matches_on_team2_id"
@@ -71,7 +78,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_132934) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "game_id", null: false
+    t.bigint "game_id"
+    t.integer "api_id"
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
 
@@ -83,8 +91,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_132934) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "picture"
-    t.integer "bank"
+    t.string "picture", default: "default-user.png"
+    t.integer "bank", default: 20000
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

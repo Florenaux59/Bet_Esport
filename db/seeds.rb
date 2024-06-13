@@ -7,23 +7,29 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "------------------------------------ START ----------------------------------"
+Team.destroy_all
+Game.destroy_all
+Match.destroy_all
+Inventory.destroy_all
+Item.destroy_all
 User.destroy_all
 
 florent = User.new(email: "flo@gmail.com", password: "password", picture: "default-user", bank: 20000)
-florent.save
+florent.save!
 
 nicolas = User.new(email: "nico@gmail.com", password: "password", picture: "default-user", bank: 20000)
-nicolas.save
+nicolas.save!
 
 remi = User.new(email: "remi@gmail.com", password: "password", picture: "default-user", bank: 20000)
-remi.save
+remi.save!
 
 require 'uri'
 require 'net/http'
 require 'json'
 
-Team.destroy_all
-Game.destroy_all
+
 valorant = Game.create!(name: "Valorant", slug: "valorant")
 rocket = Game.create!(name: "Rocket League", slug: "rl")
 lol = Game.create!(name: "League of Legends", slug: "league-of-legends")
@@ -45,15 +51,15 @@ counter = 1
   p array.size
 
   array.each do |team_vl|
-    Team.create(team_name: team_vl["name"], game: valorant, picture: team_vl["image_url"])
+    Team.create!(team_name: team_vl["name"], game: valorant, api_id: team_vl["id"], picture: team_vl["image_url"])
   end
   counter += 1
 end
 puts "---------------------------fin création team valo--------------------------"
 
-puts "---------------------------création match valo --------------------------"
+puts "---------------------------création upcoming_match valo --------------------------"
 counter = 1
-5.times do
+2.times do
   url6 = URI("https://api.pandascore.co/valorant/matches/upcoming?page=#{counter}&per_page=100")
 
   http6 = Net::HTTP.new(url6.host, url6.port)
@@ -72,14 +78,12 @@ counter = 1
     if match_vl["opponents"].present? && match_vl["opponents"][0] && match_vl["opponents"][1]
       team1 = Team.find_by(team_name: match_vl["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_vl["opponents"][1]["opponent"]["name"])
-
-      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}")
+      Match.create!(team1: team1, team2: team2, start_date: match_vl["begin_at"], game: valorant, api_id: match_vl["id"], odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}", status: match_vl["status"], league: match_vl["league"]["name"], serie: match_vl["serie"]["full_name"])
     end
   end
   counter += 1
 end
-puts "---------------------------fin création match valo --------------------------"
-
+puts "---------------------------fin création upcoming_match valo --------------------------"
 
 puts "---------------------------début création team rl--------------------------"
 counter = 1
@@ -98,13 +102,13 @@ counter = 1
   p array2.size
 
   array2.each do |team_rl|
-    Team.create(team_name: team_rl["name"], game: rocket, picture: team_rl["image_url"])
+    Team.create!(team_name: team_rl["name"], game: rocket, api_id: team_rl["id"], picture: team_rl["image_url"])
   end
   counter += 1
 end
 puts "---------------------------fin création team rl--------------------------"
 
-puts "---------------------------création match rl--------------------------"
+puts "---------------------------création upcoming_match rl--------------------------"
 url5 = URI("https://api.pandascore.co/rl/matches/upcoming?page=1&per_page=100")
 
 http5 = Net::HTTP.new(url5.host, url5.port)
@@ -123,10 +127,11 @@ matches_rl.each do |match_rl|
   if match_rl["opponents"].present? && match_rl["opponents"][0] && match_rl["opponents"][1]
     team1 = Team.find_by(team_name: match_rl["opponents"][0]["opponent"]["name"])
     team2 = Team.find_by(team_name: match_rl["opponents"][1]["opponent"]["name"])
-    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}")
+
+    Match.create!(team1: team1, team2: team2, start_date: match_rl["begin_at"], game: rocket, api_id: match_rl["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_rl["status"], league: match_rl["league"]["name"], serie: match_rl["serie"]["full_name"])
   end
 end
-puts "---------------------------fin création match rl --------------------------"
+puts "---------------------------fin création upcoming_match rl --------------------------"
 
 
 puts "---------------------------début création team lol--------------------------"
@@ -145,16 +150,16 @@ counter = 1
   array3 = JSON.parse(response_body3)
   p array3.size
   array3.each do |team_lol|
-    Team.create(team_name: team_lol["name"], game: lol, picture: team_lol["image_url"])
+    Team.create!(team_name: team_lol["name"], game: lol, api_id: team_lol["id"], picture: team_lol["image_url"])
   end
   counter += 1
 end
 puts "---------------------------fin création team lol--------------------------"
 
 
-puts "---------------------------création match lol --------------------------"
+puts "---------------------------création upcoming_match lol --------------------------"
 counter = 1
-8.times do
+2.times do
   url4 = URI("https://api.pandascore.co/lol/matches/upcoming?page=#{counter}&per_page=100")
 
   http4 = Net::HTTP.new(url4.host, url4.port)
@@ -173,14 +178,13 @@ counter = 1
     if match_lol["opponents"].present? && match_lol["opponents"][0] && match_lol["opponents"][1]
       team1 = Team.find_by(team_name: match_lol["opponents"][0]["opponent"]["name"])
       team2 = Team.find_by(team_name: match_lol["opponents"][1]["opponent"]["name"])
-      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol, odd: "#{rand(1.0..3.0)}/#{rand(1.0..3.0)}")
+      Match.create!(team1: team1, team2: team2, start_date: match_lol["begin_at"], game: lol,api_id: match_lol["id"], odd: "#{rand(1.0..3.0).round(2)}/#{rand(1.0..3.0).round(2)}", status: match_lol["status"], league: match_lol["league"]["name"], serie: match_lol["serie"]["full_name"])
     end
   end
   counter += 1
 end
-puts "---------------------------fin création match lol --------------------------"
+puts "---------------------------fin création upcoming_match lol --------------------------"
 
-Item.destroy_all
 
 Item.create!(name: "Le Sorcier", picture: "sorcier", price: "5000")
 Item.create!(name: "La Princesse", picture: "princesse", price: "6000")
@@ -195,3 +199,5 @@ Item.create!(name: "La Karateka", picture: "karatéka", price: "3500")
 Item.create!(name: "Le Capitaine", picture: "capitaine", price: "4000")
 
 p Item.all.size
+
+puts "------------------------------ end ---------------------------------"

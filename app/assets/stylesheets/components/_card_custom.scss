@@ -35,18 +35,12 @@
   font-style: normal;
 }
 
-.date {
-  float: right;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
 .team_match {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 5%;
   padding: 3%;
   height: 65%;
 
@@ -86,6 +80,27 @@
 .picture_team {
   height: 30px;
 }
+<<<<<<< HEAD
 .cards-second{
   display: none;
+=======
+
+.running {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(134, 0, 0);
+  animation: colorblink 2s infinite;
+}
+
+@keyframes colorblink {
+0% { }
+50% { color:rgb(235, 81, 81); }
+}
+
+.game_info {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+>>>>>>> master
 }
