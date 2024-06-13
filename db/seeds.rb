@@ -43,7 +43,7 @@ counter = 1
 
   request = Net::HTTP::Get.new(url)
   request["accept"] = 'application/json'
-  request["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+  request["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
   response = http.request(request)
   response_body = response.body
@@ -68,7 +68,7 @@ counter = 1
   request6 = Net::HTTP::Get.new(url6)
   request6["accept"] = 'application/json'
 
-  request6["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+  request6["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
   response6 = http6.request(request6)
   matches_valorant = JSON.parse(response6.read_body)
@@ -94,7 +94,7 @@ counter = 1
 
   request2 = Net::HTTP::Get.new(url2)
   request2["accept"] = 'application/json'
-  request2["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+  request2["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
   response2 = http2.request(request2)
   response_body2 = response2.body
@@ -117,7 +117,7 @@ http5.use_ssl = true
 request5 = Net::HTTP::Get.new(url5)
 request5["accept"] = 'application/json'
 
-request5["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+request5["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
 response5 = http5.request(request5)
 matches_rl = JSON.parse(response5.read_body)
@@ -142,7 +142,7 @@ counter = 1
 
   request3 = Net::HTTP::Get.new(url3)
   request3["accept"] = 'application/json'
-  request3["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+  request3["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
   response3 = http3.request(request3)
   response_body3 = response3.body
@@ -167,7 +167,7 @@ counter = 1
   request4 = Net::HTTP::Get.new(url4)
   request4["accept"] = 'application/json'
 
-  request4["authorization"] = 'Bearer OFZGCDoGWBUv4oLqD5LJcynh4p0Ad-L-9Ln1HkGA968MmOggmYg'
+  request4["authorization"] = 'Bearer 7vRRQcJkEazGGW5jcnMWzlQd2ddEOR990EqpheND4F9vWfYGkBM'
 
   response4 = http4.request(request4)
   matches_lol = JSON.parse(response4.read_body)
