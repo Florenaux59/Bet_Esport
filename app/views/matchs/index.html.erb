@@ -89,15 +89,10 @@
 
         <div class="block_game">
 
-                <%case @matchs.game.js_slug %>
+                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_lol"}) %>
+                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_rl"}) %>
+                  <%= image_tag("valorant-img", alt: "lol", class: "img_panier d-none",  data: {add_bets_basket_target: "img_valorant"}) %>
 
-                <%when "leagueoflegends"%>
-                  <%= image_tag("lol-img-i", alt: "lol", class: "img_panier") %>
-                <%when "rl"%>
-                  <%= image_tag("rocket-league-img", alt: "lol", class: "img_panier") %>
-                <%else%>
-                  <%= image_tag("valorant-img", alt: "lol", class: "img_panier") %>
-                <%end %>
 
           <h4 data-add-bets-basket-target="title_game"></h4>
           <div class="trait_croix"></div>

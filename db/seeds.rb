@@ -9,6 +9,7 @@
 #   end
 
 puts "------------------------------------ START ----------------------------------"
+Bet.destroy_all
 Team.destroy_all
 Game.destroy_all
 Match.destroy_all
