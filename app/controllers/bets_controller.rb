@@ -1,5 +1,6 @@
 class BetsController < ApplicationController
   def index
+    @bets = Bet.where(user: current_user).order(created_at: :desc)
   end
 
   def create

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :profils
-  resources :bets, only: :create
+  resources :bets, only: [:create, :index]
   resources :items do
     resources :inventories, only: [:create]
   end

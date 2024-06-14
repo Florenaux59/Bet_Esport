@@ -127,20 +127,30 @@ height: 20px;
   top: 60%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin-left: 3%;
   margin-top: 3%;
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
+  height: 50%;
+  width: 100%;
 }
 .money{
-  width: 30%;
-  float: right;
-  margin-right: 3%;
+  width: 45%;
+  position: absolute;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  bottom: 38%;
+  left: 40%;
 }
 .mise{
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
+  width: 100%;
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+}
+.odd{
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
 }
 .button_panier{
   background-color: #FF7D29;
@@ -156,14 +166,16 @@ height: 20px;
   font-weight: 400;
   font-style: normal;
   padding-left: 2%;
-  width: 35%;
+  width: 47%;
 
 }
 .button_panier:hover{
   opacity: 0.8;
 }
 .btn_panier{
-  width: 80%;
+  width: 100%;
   position: absolute;
-  top: 220%;
+  top: 110%;
+  display: flex;
+  justify-content: space-between;
 }

@@ -111,3 +111,47 @@
   font-style: italic;
   font-size: medium;
 }
+
+
+.card-bet-orange {
+  border: solid 1px orange;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  border-radius: 15px;
+}
+.card-bet-green {
+  border: solid 1px green;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  border-radius: 15px;
+}
+.card-bet-red {
+  border: solid 1px red;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  border-radius: 15px;
+}
+.name-game-orange{
+  color: #FF7D29;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+.name-game-red{
+  color: red;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}
+.name-game-green{
+  color: green;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+}

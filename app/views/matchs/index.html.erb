@@ -110,7 +110,8 @@
 
 
         <div class="form_money">
-          <h4 data-add-bets-basket-target="odd"></h4>
+          <h4  class="odd" data-add-bets-basket-target="odd"></h4>
+          <h4 class="mise">Mise :</h4>
           <%= simple_form_for  @bet  do |f|%>
             <%= f.input :place_money, label: false, :input_html => { :class => 'money' } %>
             <%= f.input :match_id, label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "match_input"}} %>
