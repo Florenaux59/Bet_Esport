@@ -61,9 +61,10 @@
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     font-style: normal;
-
   }
-
+  .team1:hover{
+    border: solid 1px #FF7D29;
+  }
   .team2 {
     width: 48%; height: 75%;
     background-color: #FFEEA9;
@@ -78,6 +79,10 @@
     font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     font-style: normal;
+  }
+  .team2:hover{
+    border: solid 1px #FF7D29;
+
   }
 }
 
