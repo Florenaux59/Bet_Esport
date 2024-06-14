@@ -1,21 +1,62 @@
-<div class="panier">
+<h1 class="mt-5 mb-5 text-center ">Mes paris :</h1>
+<div class="container">
 
-  <h2 class="title_panier">Panier</h2>
-  <div class="block_game">
-      <%= image_tag("lol-img-i", alt: "lol", class: "img_panier") %>
-    <h4>League of Legends</h4>
-  <div class="trait_croix"></div>
 
+  <div class="row">
+
+<% @bets.each do |bet| %>
+
+
+    <div class="col-4">
+
+
+    <% if bet.gain == 0 %>
+      <% card = "card-bet-red" %>
+     <% name_game = "name-game-red" %>
+
+
+    <% elsif bet.gain.nil? %>
+      <% card = "card-bet-orange" %>
+     <% name_game = "name-game-orange" %>
+
+    <% else %>
+          <% card = "card-bet-green" %>
+          <% name_game = "name-game-green" %>
+
+    <% end %>
+
+
+
+      <div class="<%=card%>">
+
+          <h4 class="<%= name_game%>"><%= bet.match.game.name %></h4>
+
+          <% if bet.team_number == 1 %>
+            <% the_odd = bet.match.odd.match(/(\d\.\d*)\/(\d\.\d*)/)[1]  %>
+            <h5><strong> <%= bet.match.team1.team_name %></strong> </h5>
+            <p> <%= bet.match.team2.team_name %></p>
+          <% else %>
+             <% the_odd = bet.match.odd.match(/(\d\.\d*)\/(\d\.\d*)/)[1]  %>
+            <h5><strong> <%= bet.match.team2.team_name %></strong></h5>
+            <p> <%= bet.match.team1.team_name %></p>
+
+          <% end %>
+
+
+
+
+          <p><%= "Mise #{bet.place_money}" %><%= image_tag("cash", alt: "cash", class: "img_cash")%></p>
+          <p><%="Côte #{the_odd}"%></p>
+
+
+        </div>
+
+      </div>
+
+
+
+
+<% end %>
   </div>
-  <div class="trait_croix_bas"></div>
-  <h3 class="">équipe1</h3>
-    <h3 class="">équipe2</h3>
-
-    <div class="trait_right"></div>
-    <div class="trait_left"></div>
-    <div class="trait_bot"></div>
-    <div class="trait_pencher"></div>
-
-
 
 </div>

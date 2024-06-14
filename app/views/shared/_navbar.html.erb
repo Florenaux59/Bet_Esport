@@ -9,7 +9,7 @@
       <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
         <%= link_to "Information personnel", profils_path, class: "dropdown-item" %>
         <%= link_to "Inventaire", inventories_path, class: "dropdown-item" %>
-        <%= link_to "Paris en cours", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+        <%= link_to "Paris en cours", bets_path , class: "dropdown-item" %>
         <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
     <% else %>
       <%= image_tag "default-user", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

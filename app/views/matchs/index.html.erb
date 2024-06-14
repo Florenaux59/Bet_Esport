@@ -60,9 +60,9 @@
               <div class="team_match">
                 <div class="team1" data-add-bets-basket-target="team1" data-team-number="1" data-action="click->add-bets-basket#basket"><%= match.team1.team_name %>
                   <% unless match.team1.picture.nil? %>
-                    <%= image_tag match.team1.picture, alt: "team", class: "picture_team"  %>
+                    <%= image_tag match.team1.picture, alt: "team", class: "picture_team" %>
                   <% else %>
-                      <%= image_tag("img-default-logo", alt: "team", class: "picture_team") %>
+                      <%= image_tag("img-ppdefault.png", alt: "team", class: "picture_team") %>
                   <% end %>
                 </div>
 
@@ -70,7 +70,7 @@
                   <% unless match.team2.picture.nil? %>
                     <%= image_tag match.team2.picture, alt: "team", class: "picture_team"  %>
                     <% else %>
-                        <%= image_tag("img-default-logo", alt: "team",class: "picture_team") %>
+                        <%= image_tag("img-ppdefault.png", alt: "team",class: "picture_team") %>
                     <% end %>
                     <%= match.team2.team_name %>
                   </div>
@@ -110,13 +110,16 @@
 
 
         <div class="form_money">
-          <h4 data-add-bets-basket-target="odd"></h4>
+          <h4  class="odd" data-add-bets-basket-target="odd"></h4>
+          <h4 class="mise">Mise :</h4>
           <%= simple_form_for  @bet  do |f|%>
-            <%= f.input :place_money %>
+            <%= f.input :place_money, label: false, :input_html => { :class => 'money' } %>
             <%= f.input :match_id, label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "match_input"}} %>
             <%= f.input :team_number,label: false, input_html: {class: "d-none", data: { add_bets_basket_target: "team_number"}} %>
-            <%= link_to "Retour", matchs_path%>
-            <%= f.submit 'Envoye', class: "btn"%>
+            <div class="btn_panier">
+            <%= link_to "Retour", matchs_path, class: "button_panier"%>
+            <%= f.submit 'Envoyer', class: "button_panier"%>
+            </div>
           <%end%>
 
       </div>
