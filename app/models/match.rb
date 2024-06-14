@@ -46,8 +46,8 @@ class Match < ApplicationRecord
 
       if bet.team_number == winner
         bet.gain = bet.place_money * the_odd.to_f
-        current_user.bank += bet.gain
-        current_user.save
+        bet.user.bank += bet.gain
+        bet.user.save
       else
         bet.gain = 0
       end
