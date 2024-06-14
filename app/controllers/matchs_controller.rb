@@ -4,7 +4,6 @@ class MatchsController < ApplicationController
     @matchs = Match.includes(:team1, :team2, :game).all
     @games = Game.all
     @bet = Bet.new
-
   end
 
   def show

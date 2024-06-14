@@ -46,7 +46,10 @@
 
 
           <p><%= "Mise #{bet.place_money}" %><%= image_tag("cash", alt: "cash", class: "img_cash")%></p>
-          <p><%="Côte #{the_odd}"%></p>
+          <p ><%="Côte #{the_odd}"%></p>
+          <%bet.gain = bet.place_money * the_odd.to_f%>
+         <p class="fw-bold"> <%="Gains : #{bet.gain}"%><%= image_tag("cash", alt: "cash", class: "img_cash")%></p>
+
 
 
         </div>
